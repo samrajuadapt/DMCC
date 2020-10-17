@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/bg_main">
 
     <TextView
         android:text="Welcome"
+        android:textColor="@color/colorWhite"
         android:textSize="28sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"

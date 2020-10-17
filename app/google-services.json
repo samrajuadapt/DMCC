@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "65848410700",
+    "firebase_url": "https://dmcc-a6b84.firebaseio.com",
+    "project_id": "dmcc-a6b84",
+    "storage_bucket": "dmcc-a6b84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65848410700:android:c0d3d7fe97ea6386782ae9",
+        "android_client_info": {
+          "package_name": "com.samboy.dmcc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65848410700-p2okjc3achl4nb3n31mg3o142j36uumb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsLK3L_cqpE3V3exP00--Gup7f3r3MeHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65848410700-p2okjc3achl4nb3n31mg3o142j36uumb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

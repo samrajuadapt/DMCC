@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".auth.ui.LoginActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="loginViewModel"
+            type="com.samboy.dmcc.auth.viewmodel.AuthViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".auth.ui.LoginActivity"
+        android:gravity="center"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical">
+        <TextView
+            android:text="@string/login"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_35ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:text="@={loginViewModel.email}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_edt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/username"
+            android:singleLine="true"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGrayVL"/>
+        <EditText
+            android:text="@={loginViewModel.password}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_edt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/password"
+            android:singleLine="true"
+            android:inputType="textPassword"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGrayVL"/>
+        <Button
+            android:onClick="@{()->loginViewModel.onLogin()}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_btn_login"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/login"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:textSize="@dimen/_12ssp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGrayVL"/>
+        <TextView
+            android:onClick="@{(view)->loginViewModel.gotoRegister(view)}"
+            android:text="@string/create_an_account"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>
