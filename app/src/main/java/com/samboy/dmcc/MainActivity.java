@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.samboy.dmcc.auth.ui.LoginActivity;
 import com.samboy.dmcc.database.Database;
 import com.samboy.dmcc.database.dao.UserDao;
+import com.samboy.dmcc.home.ui.HomeActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Database db;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoHome(){
         if(!isFinishing()){
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
     }

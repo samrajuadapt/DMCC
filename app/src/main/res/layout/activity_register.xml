@@ -72,6 +72,7 @@
                 android:background="@drawable/bg_edt"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:hint="@string/phone"
+                android:inputType="phone"
                 android:singleLine="true"
                 android:textSize="@dimen/_12ssp"
                 android:textAlignment="center"

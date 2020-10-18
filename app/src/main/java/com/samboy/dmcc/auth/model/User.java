@@ -3,33 +3,40 @@ package com.samboy.dmcc.auth.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.samboy.dmcc.constants.SC;
+
 @Entity(tableName = "user")
 public class User {
     @PrimaryKey
-    private int id;
+    private int uuid;
+    private String id;
     private String name;
-    private String username;
     private String email;
     private String mobile;
     private String password;
 
-    public User() {
-    }
 
-    public User(int id, String name, String username, String email, String mobile, String password) {
+    public User(String id, String name, String email, String mobile, String password) {
         this.id = id;
         this.name = name;
-        this.username = username;
         this.email = email;
         this.mobile = mobile;
         this.password = password;
     }
 
-    public int getId() {
+    public int getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(int uuid) {
+        this.uuid = uuid;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,14 +46,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getEmail() {

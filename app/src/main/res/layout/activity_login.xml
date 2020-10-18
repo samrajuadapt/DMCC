@@ -52,7 +52,6 @@
             android:background="@drawable/bg_btn_login"
             android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/login"
-
             android:textSize="@dimen/_12ssp"
             android:textAllCaps="false"
             android:textColor="@color/colorGrayVL"/>

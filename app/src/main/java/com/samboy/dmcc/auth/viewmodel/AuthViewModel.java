@@ -8,19 +8,17 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.samboy.dmcc.auth.listeners.OnLoginListeners;
-import com.samboy.dmcc.auth.listeners.OnResisterListeners;
 import com.samboy.dmcc.auth.model.AuthResponse;
 import com.samboy.dmcc.auth.model.User;
 import com.samboy.dmcc.auth.repo.AuthRepository;
 import com.samboy.dmcc.auth.ui.RegisterActivity;
+import com.samboy.dmcc.home.ui.HomeActivity;
 
 public class AuthViewModel extends ViewModel {
     private static String TAG = "AuthViewModel";
-    private OnLoginListeners onLoginListeners;
-    private OnResisterListeners onResisterListeners;
 
     private AuthRepository authRepository;
+    private AuthResponse response;
 
     public MutableLiveData<String> name = new MutableLiveData<>();
     public MutableLiveData<String> mobile = new MutableLiveData<>();
@@ -33,16 +31,12 @@ public class AuthViewModel extends ViewModel {
     public AuthViewModel(AuthRepository repository){
         this.authRepository = repository;
         authResponse = this.authRepository.getAuthResponse();
+        response = new AuthResponse();
     }
 
-
-    public void setOnResisterListeners(OnResisterListeners onResisterListeners) {
-        this.onResisterListeners = onResisterListeners;
-    }
 
     public void onLogin(){
         isProcessing.postValue(true);
-        AuthResponse response = new AuthResponse();
         if(email.getValue()==null || password.getValue()==null){
             isProcessing.postValue(false);
             response.setMessage("Email or password is empty");
@@ -53,25 +47,49 @@ public class AuthViewModel extends ViewModel {
     }
 
     public void onRegister(){
-        onResisterListeners.onRegisterStart("Register Start");
+        isProcessing.postValue(true);
         if(email.getValue() == null){
-            onResisterListeners.onRegisterFail("Email is empty");
+            isProcessing.postValue(false);
+            response.setMessage("Email is empty");
+            authResponse.postValue(response);
             return;
         }else if(password.getValue() == null){
-            onResisterListeners.onRegisterFail("Password is empty");
+            isProcessing.postValue(false);
+            response.setMessage("Password is empty");
+            authResponse.postValue(response);
             return;
-        }else if (name.getValue() == null){
-            onResisterListeners.onRegisterFail("Name is empty");
+        }else if(password.getValue() != null && password.getValue().length()<6){
+            isProcessing.postValue(false);
+            response.setMessage("Password must have minimum 6 character");
+            authResponse.postValue(response);
+        }
+        else if (name.getValue() == null){
+            isProcessing.postValue(false);
+            response.setMessage("Name is empty");
+            authResponse.postValue(response);
             return;
         }else if(mobile.getValue() == null){
-            onResisterListeners.onRegisterFail("Mobile is empty");
+            isProcessing.postValue(false);
+            response.setMessage("Mobile is empty");
+            authResponse.postValue(response);
             return;
         }
+        User user  = new User("",name.getValue(),email.getValue(),mobile.getValue(),password.getValue());
+        authRepository.registerUser(user);
+
     }
 
     public void gotoRegister(View view){
         Context ctx  = view.getContext();
         ctx.startActivity(new Intent(ctx, RegisterActivity.class));
+    }
+
+    public void gotoHome(Context ctx){
+        ctx.startActivity(new Intent(ctx, HomeActivity.class));
+    }
+
+    public void saveUser(User user){
+        authRepository.saveUser(user);
     }
 
 

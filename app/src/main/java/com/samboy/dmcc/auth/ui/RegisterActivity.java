@@ -8,47 +8,55 @@ import android.os.Bundle;
 
 import com.samboy.dmcc.BaseActivity;
 import com.samboy.dmcc.R;
-import com.samboy.dmcc.auth.listeners.OnResisterListeners;
-import com.samboy.dmcc.auth.model.User;
+
 import com.samboy.dmcc.auth.repo.AuthRepository;
 import com.samboy.dmcc.auth.viewmodel.AuthFactory;
 import com.samboy.dmcc.auth.viewmodel.AuthViewModel;
+import com.samboy.dmcc.database.Database;
 import com.samboy.dmcc.databinding.ActivityRegisterBinding;
 
-public class RegisterActivity extends BaseActivity implements OnResisterListeners {
+public class RegisterActivity extends BaseActivity{
 
     ActivityRegisterBinding binding;
     AuthViewModel authViewModel;
     AuthRepository authRepository;
     AuthFactory authFactory;
+    Database db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding  = DataBindingUtil.setContentView(this,R.layout.activity_register);
         initViewModel();
+        observeProcessing();
+        observeResponse();
     }
 
     private void initViewModel(){
-        authRepository = new AuthRepository();
+        db = Database.getInstance(this);
+        authRepository = new AuthRepository(db);
         authFactory = new AuthFactory(authRepository);
         authViewModel = new ViewModelProvider(this,authFactory).get(AuthViewModel.class);
         binding.setRegViewModel(authViewModel);
-        authViewModel.setOnResisterListeners(this);
-    }
-
-    @Override
-    public void onRegisterStart(String msg) {
 
     }
 
-    @Override
-    public void onRegisterSuccess(User user) {
+    private void observeProcessing(){
+        authViewModel.isProcessing.observe(this,isShow->{
 
+        });
     }
 
-    @Override
-    public void onRegisterFail(String msg) {
-        toast(msg);
+    private void observeResponse(){
+        authViewModel.authResponse.observe(this,authResponse -> {
+            if(authResponse.isSuccess()){
+                toast(authResponse.getMessage());
+                authViewModel.saveUser(authResponse.getUser());
+                authViewModel.gotoHome(this);
+            }else {
+                toast(authResponse.getMessage());
+            }
+        });
     }
+
 }
