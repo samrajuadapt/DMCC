@@ -1,22 +1,17 @@
 package com.samboy.dmcc.home.repo;
 
-import android.util.Log;
-
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.gson.Gson;
 import com.samboy.dmcc.auth.model.User;
 import com.samboy.dmcc.constants.SC;
 import com.samboy.dmcc.database.Database;
-import com.samboy.dmcc.home.model.AreaResponse;
-import com.samboy.dmcc.home.model.Country;
+import com.samboy.dmcc.home.model.Job;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class HomeRepository {
     private static String TAG = "Home Repo";
@@ -43,7 +38,7 @@ public class HomeRepository {
             if(task.isSuccessful()){
                 DocumentSnapshot snapshot = task.getResult();
                 if(snapshot.exists()){
-                    mList.add("Select Country");
+                    mList.add(SC.S_COUNTRY);
                     mList.addAll((List<String>)snapshot.get(SC.F_DATA));
                     mCountries.postValue(mList);;
                 }
@@ -60,7 +55,7 @@ public class HomeRepository {
             if(task.isSuccessful()){
                 DocumentSnapshot snapshot = task.getResult();
                 if(snapshot.exists()){
-                    mList.add("Select Region");
+                    mList.add(SC.S_REGION);
                     mList.addAll((List<String>)snapshot.get(SC.F_DATA));
                     mRegions.postValue(mList);;
                 }
@@ -75,7 +70,7 @@ public class HomeRepository {
             if(task.isSuccessful()){
                 DocumentSnapshot snapshot = task.getResult();
                 if(snapshot.exists()){
-                    mList.add("Select State");
+                    mList.add(SC.S_STATE);
                     mList.addAll((List<String>)snapshot.get(SC.F_DATA));
                     mSate.postValue(mList);
                 }
@@ -90,7 +85,7 @@ public class HomeRepository {
             if(task.isSuccessful()){
                 DocumentSnapshot snapshot = task.getResult();
                 if(snapshot.exists()){
-                    mList.add("Select Town");
+                    mList.add(SC.S_TOWN);
                     mList.addAll((List<String>)snapshot.get(SC.F_DATA));
                     mTown.postValue(mList);
                 }
@@ -104,7 +99,7 @@ public class HomeRepository {
             if(task.isSuccessful()){
                 DocumentSnapshot snapshot = task.getResult();
                 if(snapshot.exists()){
-                    mList.add("Select Jobs");
+                    mList.add(SC.S_JOB);
                     mList.addAll((List<String>)snapshot.get(SC.F_DATA));
                     mJob.postValue(mList);
                 }
@@ -132,6 +127,9 @@ public class HomeRepository {
 
     public User getUser(){
         return db.userDao().getLoggedInUser();
+    }
+    public void saveJob(Job job){
+        db.jobDao().addJob(job);
     }
 
 }

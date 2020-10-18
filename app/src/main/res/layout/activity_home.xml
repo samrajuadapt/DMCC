@@ -79,6 +79,7 @@
             app:adapter="@{jobSpinner}"
             binding:selectedValue="@={homeViewModel.selectedJob}"/>
         <Button
+            android:onClick="@{(view)->homeViewModel.onContinueClick(view)}"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="@dimen/_35sdp"
             android:background="@drawable/bg_btn_login"

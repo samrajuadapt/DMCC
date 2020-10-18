@@ -26,7 +26,7 @@
             android:layout_height="@dimen/_35sdp"
             android:background="@drawable/bg_edt"
             android:layout_marginTop="@dimen/_10sdp"
-            android:hint="@string/username"
+            android:hint="@string/email"
             android:singleLine="true"
             android:textSize="@dimen/_12ssp"
             android:textAlignment="center"

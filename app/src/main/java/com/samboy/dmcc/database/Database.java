@@ -9,13 +9,16 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.samboy.dmcc.auth.model.User;
+import com.samboy.dmcc.database.dao.JobDao;
 import com.samboy.dmcc.database.dao.UserDao;
+import com.samboy.dmcc.home.model.Job;
 
-@androidx.room.Database(entities = {User.class},version = 1)
+@androidx.room.Database(entities = {User.class, Job.class},version = 1)
 public abstract class Database extends RoomDatabase {
 
     private static String TAG = "DATABASE";
     public abstract UserDao userDao();
+    public abstract JobDao jobDao();
     private static Database instance;
 
     public static Database getInstance(Context context){

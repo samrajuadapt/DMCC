@@ -1,35 +1,18 @@
 package com.samboy.dmcc.home.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.samboy.dmcc.BaseActivity;
 import com.samboy.dmcc.R;
-import com.samboy.dmcc.constants.SC;
 import com.samboy.dmcc.database.Database;
 import com.samboy.dmcc.databinding.ActivityHomeBinding;
-import com.samboy.dmcc.home.model.Country;
-import com.samboy.dmcc.home.model.Job;
-import com.samboy.dmcc.home.model.Region;
-import com.samboy.dmcc.home.model.State;
-import com.samboy.dmcc.home.model.Town;
 import com.samboy.dmcc.home.repo.HomeRepository;
 import com.samboy.dmcc.home.viewmodel.HomeFactory;
 import com.samboy.dmcc.home.viewmodel.HomeViewModel;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class HomeActivity extends BaseActivity {
 

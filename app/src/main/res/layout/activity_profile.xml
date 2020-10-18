@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="profileViewModel"
+            type="com.samboy.dmcc.profile.viewmodels.ProfileViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".profile.ui.ProfileActivity"
+        android:background="@drawable/bg_main"
+        android:orientation="vertical"
+        android:gravity="center">
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@color/colorWhite"
+            app:cardCornerRadius="@dimen/_40sdp">
+            <ImageView
+                android:src="@drawable/ic_user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:text="@={profileViewModel.address1}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_edt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/address_line_1"
+            android:singleLine="true"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGrayVL"/>
+        <EditText
+            android:text="@={profileViewModel.address2}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_edt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/address_line_2"
+            android:singleLine="true"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGrayVL"/>
+        <EditText
+            android:text="@={profileViewModel.address3}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_edt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:hint="@string/address_line_3"
+            android:singleLine="true"
+            android:textSize="@dimen/_12ssp"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorGrayVL"/>
+        <TextView
+            android:text="----- OR -------"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/colorWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:onClick="@{(view)->profileViewModel.onGpsClick(view)}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_btn_login"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/get_location"
+            android:textSize="@dimen/_12ssp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGrayVL"/>
+        <Button
+            android:onClick="@{()->profileViewModel.onContinueClick()}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_btn_login"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/_continue"
+            android:textSize="@dimen/_12ssp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGrayVL"/>
+    </LinearLayout>
+</layout>

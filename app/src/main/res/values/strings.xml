@@ -9,4 +9,8 @@
     <string name="phone">Phone</string>
     <string name="create_an_account">Create an account</string>
     <string name="_continue">Continue</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="address_line_3">Address Line 3</string>
+    <string name="get_location">Get Location</string>
 </resources>

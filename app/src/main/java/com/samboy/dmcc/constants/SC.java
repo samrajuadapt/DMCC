@@ -13,4 +13,12 @@ public class SC {
     public static String REGION = "Region ";
     public static String TOWN = "Town";
     public static String JOBS = "Jobs";
+
+    public static String S_COUNTRY = "Select Country";
+    public static String S_STATE = "Select State";
+    public static String S_REGION = "Select Region";
+    public static String S_TOWN = "Select Town";
+    public static String S_JOB = "Select Job";
+
+    public static final int REQUEST_LOCATION_PERMISSION =  200;
 }
