@@ -1,10 +1,10 @@
 package com.samboy.dmcc.auth.viewmodel;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -12,11 +12,12 @@ import com.samboy.dmcc.auth.model.AuthResponse;
 import com.samboy.dmcc.auth.model.User;
 import com.samboy.dmcc.auth.repo.AuthRepository;
 import com.samboy.dmcc.auth.ui.RegisterActivity;
-import com.samboy.dmcc.home.ui.HomeActivity;
+import com.samboy.dmcc.jobs.ui.JobActivity;
 
 public class AuthViewModel extends ViewModel {
     private static String TAG = "AuthViewModel";
 
+    private ProgressDialog pDialog;
     private AuthRepository authRepository;
     private AuthResponse response;
 
@@ -35,7 +36,7 @@ public class AuthViewModel extends ViewModel {
     }
 
 
-    public void onLogin(){
+    public void onLogin(View view){
         isProcessing.postValue(true);
         if(email.getValue()==null || password.getValue()==null){
             isProcessing.postValue(false);
@@ -43,10 +44,13 @@ public class AuthViewModel extends ViewModel {
             authResponse.postValue(response);
             return;
         }
+        pDialog = new ProgressDialog(view.getContext());
+        pDialog.setMessage("Signing in");
+        pDialog.show();
         authRepository.loginUser(email.getValue(),password.getValue());
     }
 
-    public void onRegister(){
+    public void onRegister(View view){
         isProcessing.postValue(true);
         if(email.getValue() == null){
             isProcessing.postValue(false);
@@ -74,6 +78,9 @@ public class AuthViewModel extends ViewModel {
             authResponse.postValue(response);
             return;
         }
+        pDialog = new ProgressDialog(view.getContext());
+        pDialog.setMessage("Registering");
+        pDialog.show();
         User user  = new User("",name.getValue(),email.getValue(),mobile.getValue(),password.getValue());
         authRepository.registerUser(user);
 
@@ -85,7 +92,11 @@ public class AuthViewModel extends ViewModel {
     }
 
     public void gotoHome(Context ctx){
-        ctx.startActivity(new Intent(ctx, HomeActivity.class));
+        pDialog.dismiss();
+        ctx.startActivity(new Intent(ctx, JobActivity.class));
+    }
+    public void dismiss(){
+        pDialog.dismiss();
     }
 
     public void saveUser(User user){

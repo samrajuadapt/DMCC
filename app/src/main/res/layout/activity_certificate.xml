@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.samboy.dmcc.certificate.viewmodel.CertificateViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".certificate.ui.CertificateActivity">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title=""
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorGrayL"/>
+        <LinearLayout
+            android:layout_below="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                app:image="@{viewModel.user.image}"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"/>
+            <TextView
+                android:text="@{`Hi `+viewModel.user.name}"
+                android:textSize="@dimen/_20ssp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/colorGrayL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="@{`Welcome to Company as `+viewModel.jobs.job}"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textColor="@color/colorGrayL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:onClick="@{(view)->viewModel.sendPdf(view)}"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:background="@drawable/bg_btn_login"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/send_certificate"
+                android:textSize="@dimen/_12ssp"
+                android:textAllCaps="false"
+                android:textColor="@color/colorGrayVL"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -21,4 +21,6 @@ public class SC {
     public static String S_JOB = "Select Job";
 
     public static final int REQUEST_LOCATION_PERMISSION =  200;
+    public static final int REQUEST_STORAGE_PERMISSION =  300;
+    public static final int SELECT_IMAGE =  400;
 }

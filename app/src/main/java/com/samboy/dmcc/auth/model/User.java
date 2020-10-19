@@ -1,5 +1,7 @@
 package com.samboy.dmcc.auth.model;
 
+import android.net.Uri;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -16,6 +18,8 @@ public class User {
     private String password;
     private String image;
 
+    public User() {
+    }
 
     public User(String id, String name, String email, String mobile, String password) {
         this.id = id;
@@ -76,6 +80,8 @@ public class User {
     public String getImage() {
         return image;
     }
+
+
 
     public void setImage(String image) {
         this.image = image;

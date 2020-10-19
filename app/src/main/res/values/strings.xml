@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DMCC</string>
+    <string name="app_name">DMCC Test</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -13,4 +13,6 @@
     <string name="address_line_2">Address Line 2</string>
     <string name="address_line_3">Address Line 3</string>
     <string name="get_location">Get Location</string>
+    <string name="send_certificate">Send Certificate</string>
+    <string name="logout">Logout</string>
 </resources>

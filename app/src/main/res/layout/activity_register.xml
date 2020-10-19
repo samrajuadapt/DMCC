@@ -79,7 +79,7 @@
                 android:textColor="@color/colorWhite"
                 android:textColorHint="@color/colorGrayVL"/>
             <Button
-                android:onClick="@{()->regViewModel.onRegister()}"
+                android:onClick="@{(view)->regViewModel.onRegister(view)}"
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/bg_btn_login"

@@ -18,12 +18,15 @@
         android:orientation="vertical"
         android:gravity="center">
         <androidx.cardview.widget.CardView
+            android:onClick="@{(view)->profileViewModel.onProfileClick(view)}"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="@dimen/_80sdp"
             android:background="@color/colorWhite"
             app:cardCornerRadius="@dimen/_40sdp">
             <ImageView
+                app:profileImage="@{profileViewModel.imgProfile.imageUri}"
                 android:src="@drawable/ic_user"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </androidx.cardview.widget.CardView>
@@ -81,7 +84,7 @@
             android:textAllCaps="false"
             android:textColor="@color/colorGrayVL"/>
         <Button
-            android:onClick="@{()->profileViewModel.onContinueClick()}"
+            android:onClick="@{(view)->profileViewModel.onContinueClick(view)}"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="@dimen/_35sdp"
             android:background="@drawable/bg_btn_login"

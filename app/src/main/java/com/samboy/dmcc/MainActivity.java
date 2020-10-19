@@ -8,10 +8,10 @@ import android.os.Handler;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.samboy.dmcc.auth.ui.LoginActivity;
+import com.samboy.dmcc.certificate.ui.CertificateActivity;
 import com.samboy.dmcc.database.Database;
 import com.samboy.dmcc.database.dao.UserDao;
-import com.samboy.dmcc.home.ui.HomeActivity;
-import com.samboy.dmcc.profile.ui.ProfileActivity;
+import com.samboy.dmcc.jobs.ui.JobActivity;
 
 public class MainActivity extends AppCompatActivity {
     private Database db;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startTimer(){
-        new Handler().postDelayed(this::checkData,2000);
+        new Handler().postDelayed(this::checkLogin,2000);
     }
 
     private void checkLogin(){
@@ -46,18 +46,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void checkData(){
-        if(db.jobDao().getJob(firebaseAuth.getCurrentUser().getUid())!=null){
-            startActivity(new Intent(this, ProfileActivity.class));
-            finish();
-        }else {
-            gotoHome();
-        }
-    }
-
     private void gotoHome(){
         if(!isFinishing()){
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, JobActivity.class));
             finish();
         }
     }

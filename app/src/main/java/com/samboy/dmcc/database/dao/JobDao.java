@@ -6,8 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.samboy.dmcc.auth.model.User;
-import com.samboy.dmcc.home.model.Job;
+import com.samboy.dmcc.jobs.model.Job;
 
 @Dao
 public interface JobDao {
@@ -23,4 +22,7 @@ public interface JobDao {
 
     @Update
     void updateJob(Job job);
+
+    @Query("DELETE  FROM jobs")
+    void deleteAll();
 }

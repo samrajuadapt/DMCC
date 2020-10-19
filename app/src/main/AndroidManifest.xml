@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".profile.ui.ProfileActivity"></activity>
-        <activity android:name=".home.ui.HomeActivity" />
+        <activity android:name=".certificate.ui.CertificateActivity"></activity>
+        <activity android:name=".profile.ui.ProfileActivity" />
+        <activity android:name=".jobs.ui.JobActivity" />
         <activity android:name=".auth.ui.RegisterActivity" />
         <activity android:name=".auth.ui.LoginActivity" />
         <activity android:name=".MainActivity">

@@ -54,6 +54,7 @@ public class RegisterActivity extends BaseActivity{
                 authViewModel.saveUser(authResponse.getUser());
                 authViewModel.gotoHome(this);
             }else {
+                authViewModel.dismiss();
                 toast(authResponse.getMessage());
             }
         });

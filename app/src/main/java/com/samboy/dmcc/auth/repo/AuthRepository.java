@@ -10,11 +10,13 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import com.samboy.dmcc.auth.model.AuthResponse;
 import com.samboy.dmcc.auth.model.User;
 import com.samboy.dmcc.constants.SC;
 import com.samboy.dmcc.database.Database;
 
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -68,7 +70,10 @@ public class AuthRepository {
                     if(task.isSuccessful()){
                         DocumentSnapshot document = userTask.getResult();
                         if(document.exists()){
-                            User user = new Gson().fromJson(document.getData().toString(),User.class);
+                            User user = new User();
+                            user.setMobile(document.get("mobile").toString());
+                            user.setName(document.get("name").toString());
+                            user.setEmail(document.get("email").toString());
                             user.setId(firebaseAuth.getCurrentUser().getUid());
                             res.setSuccess(true);
                             res.setMessage("Login Success");

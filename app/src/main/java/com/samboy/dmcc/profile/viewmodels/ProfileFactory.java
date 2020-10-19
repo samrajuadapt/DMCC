@@ -4,10 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.samboy.dmcc.home.repo.HomeRepository;
-import com.samboy.dmcc.home.viewmodel.HomeViewModel;
 import com.samboy.dmcc.profile.repo.ProfileRepository;
-import com.samboy.dmcc.profile.ui.ProfileActivity;
 
 public class ProfileFactory extends ViewModelProvider.NewInstanceFactory {
 

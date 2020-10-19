@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="jobViewModel"
+            type="com.samboy.dmcc.jobs.viewmodel.JobViewModel" />
+        <variable
+            name="countrySpinner"
+            type="android.widget.ArrayAdapter" />
+        <variable
+            name="regionSpinner"
+            type="android.widget.ArrayAdapter" />
+        <variable
+            name="stateSpinner"
+            type="android.widget.ArrayAdapter" />
+        <variable
+            name="townSpinner"
+            type="android.widget.ArrayAdapter" />
+        <variable
+            name="jobSpinner"
+            type="android.widget.ArrayAdapter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".jobs.ui.JobActivity"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/bg_main">
+        <TextView
+            android:text="@{jobViewModel.userName}"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="@color/colorGrayVL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:popupBackground="@color/colorGrayL"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:adapter="@{countrySpinner}"
+            binding:selectedValue="@={jobViewModel.selectedCountry}"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:popupBackground="@color/colorGrayL"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:adapter="@{regionSpinner}"
+            binding:selectedValue="@={jobViewModel.selectedRegion}"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:popupBackground="@color/colorGrayL"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:adapter="@{stateSpinner}"
+            binding:selectedValue="@={jobViewModel.selectedState}"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:popupBackground="@color/colorGrayL"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:adapter="@{townSpinner}"
+            binding:selectedValue="@={jobViewModel.selectedTown}"/>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:popupBackground="@color/colorGrayL"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:adapter="@{jobSpinner}"
+            binding:selectedValue="@={jobViewModel.selectedJob}"/>
+        <Button
+            android:onClick="@{(view)->jobViewModel.onContinueClick(view)}"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bg_btn_login"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/_continue"
+            android:textSize="@dimen/_12ssp"
+            android:textAllCaps="false"
+            android:textColor="@color/colorGrayVL"/>
+
+    </LinearLayout>
+
+</layout>

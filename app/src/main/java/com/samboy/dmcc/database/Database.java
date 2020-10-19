@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.samboy.dmcc.auth.model.User;
 import com.samboy.dmcc.database.dao.JobDao;
 import com.samboy.dmcc.database.dao.UserDao;
-import com.samboy.dmcc.home.model.Job;
+import com.samboy.dmcc.jobs.model.Job;
 
 @androidx.room.Database(entities = {User.class, Job.class},version = 1)
 public abstract class Database extends RoomDatabase {

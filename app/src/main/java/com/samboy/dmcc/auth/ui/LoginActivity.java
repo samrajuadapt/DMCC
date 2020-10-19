@@ -51,6 +51,7 @@ public class LoginActivity extends BaseActivity {
                 authViewModel.saveUser(response.getUser());
                 authViewModel.gotoHome(this);
             }else {
+                authViewModel.dismiss();
                 toast(response.getMessage());
             }
         });
